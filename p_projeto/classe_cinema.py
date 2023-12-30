@@ -9,17 +9,23 @@ class Cinema:
         self.lista_data = ['15 de novembro de 2023','22 de novembro de 2023','2 de novembro de 2023 ','5 de outubro de 2023']
         self.lista_drt = ['Francis Lawrence','Robert Smigel','Silvio Guindane','Cal Brunker']
 
-    def Consultar_filme(self,filme):
+
+  
+    def Detalhes(self):
+        pass
+
+  
+    def Consultar_filme(self):
         self.conexao = sqlite3.connect('tabela_filmes.db')
         self.sql = self.conexao.cursor()
         self.sql.execute('SELECT * FROM filmes')
         self.pcrfilme = self.sql.fetchall()
-        if filme in self.pcrfilme:
-            print('oi')
-        else:
-            print('oii')
+        self.dicionario_filmes = {}
+        for i in self.pcrfilme:
+            self.dicionario_filmes[i[0]] = [i[1],i[2],i[3],i[4]]
         self.conexao.commit()
         self.conexao.close()
+        return self.dicionario_filmes
         
         # self.caixaPesquisa = Entry(root)
         # self.caixaPesquisa["bg"] = "black"
