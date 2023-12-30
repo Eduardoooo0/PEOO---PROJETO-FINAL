@@ -7,6 +7,7 @@ from classe_cinema import Cinema
 
 class App:
     def __init__(self, root):
+        self.cine = Cinema()
         root.title("Controle de cinema")
         width = 1394
         height = 789
@@ -109,15 +110,15 @@ class App:
         print("command")
     def Pesquisa (self):
         self.filmePesquisado = self.caixaPesquisa.get()
-        print(self.filmePesquisado)
-        self.a = Cinema()
-        self.a.Consultar_filme(self.filmePesquisado.upper())
-        
+        if self.filmePesquisado.upper() in self.cine.Consultar_filme():
+          pass
+        else:
+          pass
 
-        
+
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
     root.mainloop()
-    
+
