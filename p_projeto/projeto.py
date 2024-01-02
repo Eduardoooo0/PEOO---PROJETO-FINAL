@@ -65,20 +65,24 @@ class App:
         GLabel_938.place(x=550, y=120, width=300, height=55)
         image_spacing = 20
 
-        self.img_jv = ImageTk.PhotoImage(Image.open('jv.jpg'))
+        self.img_jv = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
         self.label_jv = tk.Label(root, image=self.img_jv, bg='white')
+        self.label_jv.bind('<Button-1>', lambda event: self.Detalhes_jv(event))
         self.label_jv.place(x=70, y=250)
 
-        self.img_leo = ImageTk.PhotoImage(Image.open('leo.jpg'))
+        self.img_leo = ImageTk.PhotoImage(Image.open('p_projeto/imagens/leo.jpg'))
         self.label_leo = tk.Label(root, image=self.img_leo, bg='white')
+        self.label_leo.bind('<Button-1>', lambda event: self.Detalhes_leo(event))
         self.label_leo.place(x=70 + self.img_jv.width() + image_spacing, y=250)
 
-        self.img_muss = ImageTk.PhotoImage(Image.open('mussum.jpeg'))
+        self.img_muss = ImageTk.PhotoImage(Image.open('p_projeto/imagens/mussum.jpeg'))
         self.label_muss = tk.Label(root, image=self.img_muss, bg='white')
+        self.label_muss.bind('<Button-1>', lambda event: self.Detalhes_mussum(event))
         self.label_muss.place(x=70 + (self.img_jv.width() + image_spacing) * 2, y=250)
 
-        self.img_pc = ImageTk.PhotoImage(Image.open('p_c.jpeg'))
+        self.img_pc = ImageTk.PhotoImage(Image.open('p_projeto/imagens/p_c.jpeg'))
         self.label_pc = tk.Label(root, image=self.img_pc, bg='white')
+        self.label_pc.bind('<Button-1>', lambda event: self.Detalhes_pc(event))
         self.label_pc.place(x=70 + (self.img_jv.width() + image_spacing) * 3, y=250)
 
         ft = tkFont.Font(family='Times', size=16)
@@ -114,6 +118,20 @@ class App:
           pass
         else:
           pass
+    def Detalhes_jv(self,evento):
+        self.canva = tk.Canvas(root)
+        self.canva.place(x=60,y=100,width=1285,height=600)
+
+        self.img_jv = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
+        self.label_jv = tk.Label(self.canva, image=self.img_jv, bg='white')
+        self.label_jv.place(x=70, y=100)
+
+    def Detalhes_leo(self,evento):
+         print('leo')
+    def Detalhes_mussum(self,evento):
+         print('mussum')
+    def Detalhes_pc(self,evento):
+         print('patrulha')
 
 
 

@@ -11,8 +11,6 @@ class Cinema:
 
 
   
-    def Detalhes(self):
-        pass
 
   
     def Consultar_filme(self):
@@ -27,24 +25,6 @@ class Cinema:
         self.conexao.close()
         return self.dicionario_filmes
         
-        # self.caixaPesquisa = Entry(root)
-        # self.caixaPesquisa["bg"] = "black"
-        # self.caixaPesquisa["borderwidth"] = "0px"
-        # self.caixaPesquisa["highlightcolor"] = "white"
-        # self.caixaPesquisa["highlightthickness"] = 2
-        # ft = tkFont.Font(family='Times', size=14)
-        # self.caixaPesquisa["font"] = ft
-        # self.caixaPesquisa["fg"] = "white"
-        # self.caixaPesquisa["justify"] = "center"
-        # self.caixaPesquisa["relief"] = "raised"
-        # self.caixaPesquisa.place(x=600, y=20, width=200, height=25)
-
-        # self.botao_pesquisar = tk.Button(root, text="Procurar", bg="black", fg="white", font=ft,command=self.Pesquisa)
-        # self.botao_pesquisar.place(x=810, y=20, width=80, height=25)
-
-        # self.filmePesquisado = self.caixaPesquisa.get
-        # print(self.filmePesquisado,'aaaaaa')
-      
     def Adicionar_filmes(self):
         self.conexao = sqlite3.connect('tabela_filmes.db')
         self.sql = self.conexao.cursor()
