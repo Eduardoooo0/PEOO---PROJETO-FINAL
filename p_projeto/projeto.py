@@ -121,17 +121,41 @@ class App:
     def Detalhes_jv(self,evento):
         self.canva = tk.Canvas(root)
         self.canva.place(x=60,y=100,width=1285,height=600)
-
-        self.img_jv = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
-        self.label_jv = tk.Label(self.canva, image=self.img_jv, bg='white')
-        self.label_jv.place(x=70, y=100)
-
+        self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
+        self.canva.create_image(200,275,image=self.imagem)
+        self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
+        self.botao.place(x=10,y=10)
+        self.canva.create_text(760, 90, text="JOGOS VORAZES: A CANTIGA DOS PÁSSAROS E DAS SERPENTES", font=("Times", 15, "bold"))
     def Detalhes_leo(self,evento):
-         print('leo')
+         self.canva = tk.Canvas(root)
+         self.canva.place(x=60,y=100,width=1285,height=600)
+
+         self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/leo.jpg'))
+         self.canva.create_image(200,275,image=self.imagem)
+         self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
+         self.botao.place(x=10,y=10)
+         self.canva.create_text(760, 90, text="LEO", font=("Times", 15, "bold"))
     def Detalhes_mussum(self,evento):
-         print('mussum')
+         self.canva = tk.Canvas(root)
+         self.canva.place(x=60,y=100,width=1285,height=600)
+
+         self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/mussum.jpeg'))
+         self.canva.create_image(200,275,image=self.imagem)
+         self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
+         self.botao.place(x=10,y=10)
+         self.canva.create_text(760, 90, text="MUSSUM:O FILMIS", font=("Times", 15, "bold"))
     def Detalhes_pc(self,evento):
-         print('patrulha')
+         self.canva = tk.Canvas(root)
+         self.canva.place(x=60,y=100,width=1285,height=600)
+
+         self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/p_c.jpeg'))
+         self.canva.create_image(200,275,image=self.imagem)
+         self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
+         self.botao.place(x=10,y=10)
+         self.canva.create_text(760, 90, text="PATRULHA CANINA:UM FILME SUPERPODEROSO", font=("Times", 15, "bold"))
+    def Sair(self,canva):
+        canva.destroy()
+
 
 
 
