@@ -67,22 +67,22 @@ class App:
 
         self.img_jv = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
         self.label_jv = tk.Label(root, image=self.img_jv, bg='white')
-        self.label_jv.bind('<Button-1>', lambda event: self.Detalhes_jv(event))
+        self.label_jv.bind('<Button-1>', lambda event: self.Event1(event))
         self.label_jv.place(x=70, y=250)
 
         self.img_leo = ImageTk.PhotoImage(Image.open('p_projeto/imagens/leo.jpg'))
         self.label_leo = tk.Label(root, image=self.img_leo, bg='white')
-        self.label_leo.bind('<Button-1>', lambda event: self.Detalhes_leo(event))
+        self.label_leo.bind('<Button-1>', lambda event: self.Event2(event))
         self.label_leo.place(x=70 + self.img_jv.width() + image_spacing, y=250)
 
         self.img_muss = ImageTk.PhotoImage(Image.open('p_projeto/imagens/mussum.jpeg'))
         self.label_muss = tk.Label(root, image=self.img_muss, bg='white')
-        self.label_muss.bind('<Button-1>', lambda event: self.Detalhes_mussum(event))
+        self.label_muss.bind('<Button-1>', lambda event: self.Event3(event))
         self.label_muss.place(x=70 + (self.img_jv.width() + image_spacing) * 2, y=250)
 
         self.img_pc = ImageTk.PhotoImage(Image.open('p_projeto/imagens/p_c.jpeg'))
         self.label_pc = tk.Label(root, image=self.img_pc, bg='white')
-        self.label_pc.bind('<Button-1>', lambda event: self.Detalhes_pc(event))
+        self.label_pc.bind('<Button-1>', lambda event: self.Event4(event))
         self.label_pc.place(x=70 + (self.img_jv.width() + image_spacing) * 3, y=250)
 
         ft = tkFont.Font(family='Times', size=16)
@@ -114,11 +114,24 @@ class App:
         print("command")
     def Pesquisa (self):
         self.filmePesquisado = self.caixaPesquisa.get()
-        if self.filmePesquisado.upper() in self.cine.Consultar_filme():
-          pass
-        else:
-          pass
-    def Detalhes_jv(self,evento):
+        self.filmePesquisado = self.filmePesquisado.upper()
+        self.dicionario = self.cine.Consultar_filme()
+        self.dicionariocvs = self.dicionario.keys()
+        for i in self.dicionariocvs:
+          if self.filmePesquisado in i:
+            self.filmeprc = i
+            if self.filmeprc == 'JOGOS VORAZES: A CANTIGA DOS PÁSSAROS E DAS SERPENTES':
+                self.Detalhes_jv()
+            if self.filmeprc == 'LEO':
+                self.Detalhes_leo()
+            if self.filmeprc == 'MUSSUM:O FILMIS':
+                self.Detalhes_mussum()
+            if self.filmeprc == 'PATRULHA CANINA:UM FILME SUPERPODEROSO':
+                self.Detalhes_pc()
+
+          else:
+            pass
+    def Detalhes_jv(self):
         self.canva = tk.Canvas(root)
         self.canva.place(x=60,y=100,width=1285,height=600)
         self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
@@ -140,7 +153,9 @@ class App:
         self.canva.create_text(595, 320, text=" Ficção Científica, Ação, Aventura",font=("Times", 10,"bold"))
         self.canva.create_text(420, 340, text="Duração:",fill="gray",font=("Times", 10,"bold"))
         self.canva.create_text(495, 340, text="2h 38min",font=("Times", 10,"bold"))
-    def Detalhes_leo(self,evento):
+        self.botao_comprar = tk.Button(self.canva, text="COMPRAR INGRESSO",bg='red' ,fg='white',font=("Times", 12,"bold"),command=lambda:self.Comprar())
+        self.botao_comprar.place(x=700,y=400,height=50,width=250)
+    def Detalhes_leo(self):
          self.canva = tk.Canvas(root)
          self.canva.place(x=60,y=100,width=1285,height=600)
 
@@ -163,7 +178,9 @@ class App:
          self.canva.create_text(615, 280, text=" Animação, Família, Aventura, Comédia",font=("Times", 10,"bold"))
          self.canva.create_text(420, 300, text="Duração:",fill="gray",font=("Times", 10,"bold"))
          self.canva.create_text(495, 300, text="1h 42min",font=("Times", 10,"bold"))
-    def Detalhes_mussum(self,evento):
+         self.botao_comprar = tk.Button(self.canva, text="COMPRAR INGRESSO",bg='red' ,fg='white',font=("Times", 12,"bold"),command=lambda:self.Comprar())
+         self.botao_comprar.place(x=700,y=400,height=50,width=250)
+    def Detalhes_mussum(self):
          self.canva = tk.Canvas(root)
          self.canva.place(x=60,y=100,width=1285,height=600)
 
@@ -186,7 +203,9 @@ class App:
          self.canva.create_text(505, 330, text="Biografia",font=("Times", 10,"bold"))
          self.canva.create_text(420, 350, text="Duração:",fill="gray",font=("Times", 10,"bold"))
          self.canva.create_text(490, 350, text="2h 2min",font=("Times", 10,"bold"))
-    def Detalhes_pc(self,evento):
+         self.botao_comprar = tk.Button(self.canva, text="COMPRAR INGRESSO",bg='red' ,fg='white',font=("Times", 12,"bold"),command=lambda:self.Comprar())
+         self.botao_comprar.place(x=700,y=400,height=50,width=250)
+    def Detalhes_pc(self):
          self.canva = tk.Canvas(root)
          self.canva.place(x=60,y=100,width=1285,height=600)
 
@@ -208,12 +227,42 @@ class App:
          self.canva.create_text(575, 290, text=" Animação, Família, Aventura",font=("Times", 10,"bold"))
          self.canva.create_text(420, 310, text="Duração:",fill="gray",font=("Times", 10,"bold"))
          self.canva.create_text(495, 310, text="1h 43min",font=("Times", 10,"bold"))
+         self.botao_comprar = tk.Button(self.canva, text="COMPRAR INGRESSO",bg='red' ,fg='white',font=("Times", 12,"bold"),command=lambda:self.Comprar())
+         self.botao_comprar.place(x=700,y=400,height=50,width=250)
     def Sair(self,canva):
         canva.destroy()
+    def Event1(self,evento):
+      self.Detalhes_jv()
+    def Event2(self,evento):
+      self.Detalhes_leo()
+    def Event3(self,evento):
+      self.Detalhes_mussum()
+    def Event4(self,evento):
+      self.Detalhes_pc()
 
+    def Comprar(self):
+      self.canva2 = tk.Canvas(self.canva, width=600, height=400, bg='white')
+      self.canva2.place(x=550,y=50)
+      self.canva2.create_text(300, 50, text="CINEMA",font=( "Times", 20, "bold"	))
+      self.canva2.create_text(300, 80, text="IFRN campus Caicó,59300-000,Nova caicó",font=( "Times", 10, "bold"	))
+      self.canva2.create_text(160, 120, text="Sala:",fill="gray",font=( "Times", 10, "bold"	))
+      self.canva2.create_text(190, 120, text="1",font=( "Times", 10, "bold"	))
+      self.canva2.create_text(315, 120, text="2D",fill="gray",font=( "Times", 10, "bold"))
+      self.canva2.create_text(440, 120, text="DUB",fill="gray",font=( "Times", 10, "bold"))
+      self.canva2.create_text(220, 160, text="Quant. de ingressos:",fill="gray",font=( "Times", 10, "bold"))
+      self.quant = tk.Entry(self.canva2,font=("Times", 10, "bold"),width=10)
+      self.quant["borderwidth"] = "0px"
+      self.quant["justify"] = "center"
+      self.quant["relief"] = "raised"
+      self.quant.place(x=310,y=150,height=20)
+      self.botao_ok = tk.Button(self.canva2, text="OK",bg='green' ,fg='white',font=("Times", 10,"bold"))
+      self.botao_ok.place(x=410,y=150,height=20)
 
-
-
+      self.botao = tk.Button(self.canva2, text="X", command= lambda:self.Sair(self.canva2))
+      self.botao['bg'] = 'red'
+      self.botao['fg'] = 'white'
+      self.botao["borderwidth"] = "0px"
+      self.botao.place(x=565,y=5,height=20,width=30)
 if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
