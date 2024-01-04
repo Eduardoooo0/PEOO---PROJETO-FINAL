@@ -14,7 +14,7 @@ class Cinema:
 
   
     def Consultar_filme(self):
-        self.conexao = sqlite3.connect('tabela_filmes.db')
+        self.conexao = sqlite3.connect('p_projeto/tabela_filmes.db')
         self.sql = self.conexao.cursor()
         self.sql.execute('SELECT * FROM filmes')
         self.pcrfilme = self.sql.fetchall()
@@ -26,10 +26,11 @@ class Cinema:
         return self.dicionario_filmes
         
     def Adicionar_filmes(self):
-        self.conexao = sqlite3.connect('tabela_filmes.db')
+        self.conexao = sqlite3.connect('p_projeto/tabela_filmes.db')
         self.sql = self.conexao.cursor()
         for i in range(len(self.lista_ttl)):
-            self.sql.execute("INSERT INTO filmes (titulo,categoria,duracao,data,diretor) VALUES (?,?,?,?,?)",(self.lista_ttl[i],self.lista_ctg[i],self.lista_drc[i],self.lista_data[i],self.lista_drt[i]))
+            self.sql.execute("INSERT INTO filmes (titulo,categoria,duracao,data,diretor) VALUES (?,?,?,?,?)",(self.lista_ttl[i],self.lista_ctg[i],self.lista_drc[i],self.lista_data[i],self.lista_drt[i],))
         self.conexao.commit()
         self.conexao.close()
 add = Cinema()
+add.Adicionar_filmes()
