@@ -10,7 +10,7 @@ class Cinema:
 
     def Consultar_filme(self):
         try:
-            self.conexao = sqlite3.connect('tabela_filmes.db')
+            self.conexao = sqlite3.connect('p_projeto/tabela_filmes.db')
             self.sql = self.conexao.cursor()
             self.sql.execute('SELECT * FROM filmes')
             self.pcrfilme = self.sql.fetchall()
@@ -24,7 +24,7 @@ class Cinema:
             messagebox.showwarning('ERRO')
     def Adicionar_filmes(self):
         try:          
-            self.conexao = sqlite3.connect('tabela_filmes.db')
+            self.conexao = sqlite3.connect('p_projeto/tabela_filmes.db')
             self.sql = self.conexao.cursor()
             for i in range(len(self.lista_ttl)):
                 self.sql.execute("INSERT INTO filmes (titulo,categoria,duracao,data,diretor) VALUES (?,?,?,?,?)",(self.lista_ttl[i],self.lista_ctg[i],self.lista_drc[i],self.lista_data[i],self.lista_drt[i],))
