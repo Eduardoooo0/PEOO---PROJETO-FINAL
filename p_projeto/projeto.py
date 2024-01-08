@@ -31,22 +31,22 @@ class App:
         self.l_lancamentos.place(x=550, y=120, width=300, height=55)
         image_spacing = 20
 
-        self.img_jv = ImageTk.PhotoImage(Image.open('imagens/jv.jpg'))
+        self.img_jv = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
         self.label_jv = tk.Label(self.root, image=self.img_jv, bg='white')
         self.label_jv.bind('<Button-1>', lambda event: self.Event1(event))
         self.label_jv.place(x=70, y=250)
 
-        self.img_leo = ImageTk.PhotoImage(Image.open('imagens/leo.jpg'))
+        self.img_leo = ImageTk.PhotoImage(Image.open('p_projeto/imagens/leo.jpg'))
         self.label_leo = tk.Label(self.root, image=self.img_leo, bg='white')
         self.label_leo.bind('<Button-1>', lambda event: self.Event2(event))
         self.label_leo.place(x=70 + self.img_jv.width() + image_spacing, y=250)
 
-        self.img_muss = ImageTk.PhotoImage(Image.open('imagens/mussum.jpeg'))
+        self.img_muss = ImageTk.PhotoImage(Image.open('p_projeto/imagens/mussum.jpeg'))
         self.label_muss = tk.Label(self.root, image=self.img_muss, bg='white')
         self.label_muss.bind('<Button-1>', lambda event: self.Event3(event))
         self.label_muss.place(x=70 + (self.img_jv.width() + image_spacing) * 2, y=250)
 
-        self.img_pc = ImageTk.PhotoImage(Image.open('imagens/p_c.jpeg'))
+        self.img_pc = ImageTk.PhotoImage(Image.open('p_projeto/imagens/p_c.jpeg'))
         self.label_pc = tk.Label(self.root, image=self.img_pc, bg='white')
         self.label_pc.bind('<Button-1>', lambda event: self.Event4(event))
         self.label_pc.place(x=70 + (self.img_jv.width() + image_spacing) * 3, y=250)
@@ -207,7 +207,7 @@ class App:
         self.canva = tk.Canvas(self.root)
         self.canva['bg'] = 'white'
         self.canva.place(x=60, y=100, width=1285, height=600)
-        self.imagem = ImageTk.PhotoImage(Image.open('imagens/jv.jpg'))
+        self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/jv.jpg'))
         self.canva.create_image(200, 275, image=self.imagem)
         self.botao = tk.Button(self.canva, text="X", command=lambda: self.Sair(self.canva))
         self.botao['bg'] = 'red'
@@ -225,7 +225,7 @@ class App:
         self.canva = tk.Canvas(self.root)
         self.canva['bg'] = 'white'
         self.canva.place(x=60, y=100, width=1285, height=600)
-        self.imagem = ImageTk.PhotoImage(Image.open('imagens/leo.jpg'))
+        self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/leo.jpg'))
         self.canva.create_image(200, 275, image=self.imagem)
         self.botao = tk.Button(self.canva, text="X", command=lambda: self.Sair(self.canva))
         self.botao['bg'] = 'red'
@@ -246,7 +246,7 @@ class App:
           self.canva = tk.Canvas(self.root)
           self.canva['bg'] = 'white'
           self.canva.place(x=60,y=100,width=1285,height=600)
-          self.imagem = ImageTk.PhotoImage(Image.open('imagens/mussum.jpeg'))
+          self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/mussum.jpeg'))
           self.canva.create_image(200,275,image=self.imagem)
           self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
           self.botao['bg'] = 'red'
@@ -267,7 +267,7 @@ class App:
           self.canva = tk.Canvas(self.root)
           self.canva['bg'] = 'white'
           self.canva.place(x=60,y=100,width=1285,height=600)
-          self.imagem = ImageTk.PhotoImage(Image.open('imagens/p_c.jpeg'))
+          self.imagem = ImageTk.PhotoImage(Image.open('p_projeto/imagens/p_c.jpeg'))
           self.canva.create_image(200,275,image=self.imagem)
           self.botao = tk.Button(self.canva, text="X", command= lambda:self.Sair(self.canva))
           self.botao['bg'] = 'red'
